@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Portfotlio</title>
+  </head>
+  <body>
+    <header>
+      <h1 id="titulo_principal">Portfotlio de Soluciones - JavaScript</h1>
+      <ul>
+        <li><a href="index.html">Unidad 1 - Introducción</a></li>
+        <li><a href="unidad2.html">Unidad 2 - Explorando JavaScript</a></li>
+        <li><a href="unidad3.html">Unidad 3 - JavaScript en el navegador</a></li>
+        <li><a href="unidad4.html">Unidad 4 - Funciones avanzadas con JavaScript</a></li>
+      </ul>
+    </header>
+
+    <main>
+      <div class="">
+        <h3><u>Unidad 1 - Conceptos Básicos de JavaScript</u></h3>
+      </div>
+      <div class="contenido">
+        <ul>
+          <li>Variables y Tipos de Datos</li>
+          <pre>
+            function totalMinutos(horas,minutos){
+              var cantMinutos = (horas * 60) + minutos;
+              return cantMinutos;
+            }
+
+            function cantidadRecolectadaSimple(costo, cantParticipantes) {
+              var dineroRecolectado = costo * cantParticipantes;
+              return dineroRecolectado;
+            }
+
+            function cantidadRecolectada(costoEstudiante,costoAdulto,cantEstudiantes,cantAdultos) {
+              var dineroRec = (costoEstudiante*cantEstudiantes) + (costoAdulto*cantAdultos);
+              return dineroRec;
+            }
+
+            console.log(totalMinutos(5,25));              <b id="devuelve">// Devuelve --> 325</b>
+            console.log(cantidadRecolectadaSimple(10,5)); <b id="devuelve">// Devuelve --> 50</b>
+            console.log(cantidadRecolectada(0,5,20,3));   <b id="devuelve">// Devuelve --> 15</b>
+          </pre>
+          <li>Trabajando con Strings</li>
+          <pre>
+            <b id="devuelve">//String interpolados ECMAScript 6</b>
+
+            function recetaCasera(ingr1,ingr2,ingr3,ingr4,ingr5,receta) {
+              return `La ${receta} lleva los sig. ingredientes: ${ingr1}, ${ingr2}, ${ingr3}, ${ingr4} y ${ingr5}`;
+            }
+            console.log(recetaCasera("tomate","lechuga","zanahoria","cebolla","huevo","Ensalada")); <b id="devuelve">// Devuelve --> La Ensalada lleva los sig. ingredientes: tomate, lechuga, zanahoria, cebolla y huevo.</b>
+          </pre>
+          <pre>
+            function encabezadoEvento(evento,lugar) {
+              return `Evento: ${evento}. Lugar: ${lugar}`;
+            }
+            function limpiarNombreParticipante(x,y) {
+              var apellido = y.trim().toUpperCase();
+              var nombre = x.trim().toLowerCase();
+              return `${apellido}, ${nombre}`;
+            }
+            console.log(encabezadoEvento("Cancha","Rosario"));
+            console.log(limpiarNombreParticipante("FRanco","demetrio")); <b id="devuelve">// Devuelve --> Demetrio, franco</b>
+          </pre>
+          <li>Funciones y condiciones</li>
+          <pre>
+            var genero = "FEMENINO"; //TRUE es Femenino. False es Masculino.
+            var momento = "";
+            function saludo(nombre,apellido,genero,evento,minutosQueFaltan) {
+              if (minutosQueFaltan< 60*24) {
+                momento = "hoy";
+              }else if(minutosQueFaltan < 60*24*2) {
+                momento = "mañana";
+              }else {
+                momento = "pronto";
+              }
+              switch (genero) {
+                case "FEMENINO":
+                console.log(`Bienvenida ${nombre.trim().toUpperCase()} ${apellido.trim().toUpperCase()}, recuerda ${momento} el evento(${evento})`);
+                break;
+                case "MASCULINO":
+                console.log(`Bienvenido ${nombre.trim().toUpperCase()} ${apellido.trim().toUpperCase()}, recuerda ${momento} el evento(${evento})`);
+                break;
+                default:
+                console.log("???");
+              }
+            }
+            saludo("    LUIS", "perez", "MASCULINO", "Película", 600)           <b id="devuelve">// Devuelve --> Bienvenido LUIS PEREZ, recuerda hoy el evento (Película)</b>
+            saludo("ana ", "peRez", "FEMENINO", "Comidas del Mundo", 1500)      <b id="devuelve">// Devuelve --> Bienvenida ANA PEREZ, recuerda mañana el evento (Comidas del Mundo)</b>
+            saludo("  PEDRO ", "Gil", "MASCULINO", "Juego de Baloncesto", 5000) <b id="devuelve">// Devuelve --> Bienvenido PEDRO GIL, recuerda pronto el evento (Juego de Baloncesto)</b>
+          </pre>
+          <li>Ciclos en JavaScript</li>
+          <pre>
+            function minimo() {
+              var min = 1000;
+              for(monto of donaciones) {
+                if (monto < min) {
+                  min = monto;
+                }
+              }
+              return min;
+            }
+
+            function maximo() {
+              var max = 0;
+              for(monto of donaciones) {
+                if (monto > max) {
+                  max = monto;
+                }
+              }
+              return max;
+            }
+
+            function promedio() {
+              var cant = 0;
+              var suma = 0;
+              for(monto of donaciones) {
+                if(monto > min && monto < max) {
+                  suma += monto;
+                  cant++;
+                }
+              }
+              return suma/cant;
+            }
+
+            var donaciones = [61,15,22,25,30,52,18,12,40];
+            var min = minimo(donaciones);
+            var max = maximo(donaciones);
+            console.log(min);                            <b id="devuelve">// Devuelve 12</b>
+            console.log(max);                            <b id="devuelve">// Devuelve 61</b>
+            console.log(promedio(min, max, donaciones)); <b id="devuelve">// Devuelve 28.857142857142858</b>
+          </pre>
+        </ul>
+      </div>
+      <div class="proxima_unidad">
+        <a href="unidad2.html">Próxima Unidad</a>
+      </div>
+
+    </main>
+
+  </body>
+</html>
